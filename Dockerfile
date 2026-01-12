@@ -1,4 +1,4 @@
-FROM library/docker:stable
+FROM docker:cli
 
 ENV HOME_DIR=/opt/crontab
 RUN apk add --no-cache --virtual .run-deps gettext bash py3-toml py3-yaml python3 jq tini \
