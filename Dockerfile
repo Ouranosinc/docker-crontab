@@ -3,7 +3,8 @@ FROM docker:cli
 ENV HOME_DIR=/opt/crontab
 RUN apk add --no-cache --virtual .run-deps gettext bash py3-toml py3-yaml python3 jq tini \
     && mkdir -p ${HOME_DIR}/jobs ${HOME_DIR}/projects \
-    && adduser -S docker -D
+    && adduser -S docker -D \
+    && delgroup docker
 
 COPY docker-entrypoint /
 ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint"]
